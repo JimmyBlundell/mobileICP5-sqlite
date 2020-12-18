@@ -153,9 +153,9 @@ public class EmployeeActivity extends AppCompatActivity {
         SQLiteDatabase database = new SampleDBSQLiteHelper(this).getReadableDatabase();
         String firstName = binding.firstnameEditText.getText().toString();
         String lastName = binding.lastnameEditText.getText().toString();
-        String whereClause = SampleDBContract.Employee.COLUMN_FIRSTNAME + " like ? AND " + SampleDBContract.Employee.COLUMN_LASTNAME + " like ?";
-        String[] whereArgs = {"%" + firstName + "%", "%" + lastName + "%"};
-        database.delete(SampleDBContract.Employee.TABLE_NAME, whereClause, whereArgs);
+        String clause = SampleDBContract.Employee.COLUMN_FIRSTNAME + " like ? AND " + SampleDBContract.Employee.COLUMN_LASTNAME + " like ?";
+        String[] args = {"%" + firstName + "%", "%" + lastName + "%"};
+        database.delete(SampleDBContract.Employee.TABLE_NAME, clause, args);
         binding.firstnameEditText.setText("");
         binding.lastnameEditText.setText("");
         readFromDB();
